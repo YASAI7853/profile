@@ -3,18 +3,24 @@ body {
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: #0b0b0f;
-    background-image: url("rainbow_bg.png");
-    background-repeat: repeat-x;
-    background-size: auto 100%;
-    background-position: 0 0;
+    
+    /* 🌈 画像を使わずに、CSSだけで作った綺麗な虹色グラデーション */
+    background: linear-gradient(120deg, #ff007f, #7f00ff, #00bfff, #00ff7f, #ffff00, #ff7f00, #ff007f);
+    
+    /* 背景のサイズを思いっきり大きくして、動かせるようにする */
+    background-size: 400% 400%;
+    
     background-attachment: fixed;
-    animation: scrollBackground 30s linear infinite;
+    
+    /* 👇 15秒かけて虹色がウネウネと動き続けるアニメーション */
+    animation: rainbowMove 15s ease infinite;
 }
 
-@keyframes scrollBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -1920px 0; }
+/* 🎬 虹色グラデーションを滑らかに動かすアニメーション */
+@keyframes rainbowMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .main-container {
@@ -42,13 +48,14 @@ h1 {
 }
 
 .card {
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(6px);
+    /* 背景の虹色が強烈やから、文字が読めるようにちょっと濃いめの半透明の黒にする */
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
     padding: 30px;
     border-radius: 15px;
-    border: 2px solid #ff00ff;
+    border: 2px solid #ffffff;
     display: inline-block;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
